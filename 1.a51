@@ -10,7 +10,7 @@ MAIN:
 	xrl A, #0Fh ; A is the value
 	
 	; Show left digit
-	ll A
+	lr A
 	mov r1, A
 	mov A, @DPTR + A
 	mov P3, A

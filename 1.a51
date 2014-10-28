@@ -6,7 +6,8 @@ MAIN:
 	; P3 for 7Seg Content
 	mov P1, #0EFh
 	mov A, P1
-	anl A, #0Fh ; A is the value
+	anl A, #0Fh
+	xrl A, #0Fh ; A is the value
 	
 	; Show left digit
 	ll A

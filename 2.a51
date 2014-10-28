@@ -85,28 +85,21 @@ SCAN_FINISH:
 	
 SHOW_DIGIT:
 	; The value is in A
-	push 1
-	mov DPTR, #SEG_TABLE
+	mov B, #10
+	div AB
 	
 	; Show left digit
-	rl A
-	mov r1, A
-	movc A, @A+DPTR
 	mov P3, A
 	setb P2.1
 	clr P2.0
 	call Delay
 	
 	; Show right digit
-	mov A, r1
-	inc A
-	movc A, @A+DPTR
-	mov P3, A
+	mov P3, B
 	setb P2.0
 	clr P2.1
 	call Delay
 	
-	pop 1
 	ret
 	
 Delay:
@@ -122,208 +115,6 @@ D1:
 	pop 6
 	pop 4
 	ret
-
-SEG_TABLE:
-	db 0
-	db 0 ;
-	db 0
-	db 1 ;
-	db 0
-	db 2 ;
-	db 0
-	db 3 ;
-	db 0
-	db 4 ;
-	db 0
-	db 5 ;
-	db 0
-	db 6 ;
-	db 0 
-	db 7 ;
-	db 0
-	db 8 ;
-	db 0
-	db 9 ;
-	db 1
-	db 0 ;
-	db 1
-	db 1 ;
-	db 1
-	db 2 ;
-	db 1
-	db 3 ;
-	db 1
-	db 4 ;
-	db 1
-	db 5 ;
-	db 1
-	db 6 ;
-	db 1
-	db 7 ;
-	db 1
-	db 8 ;
-	db 1
-	db 9 ;
-	db 2
-	db 0 ;
-	db 2
-	db 1 ;
-	db 2
-	db 2 ;
-	db 2
-	db 3 ;
-	db 2
-	db 4 ;
-	db 2
-	db 5 ;
-	db 2
-	db 6 ;
-	db 2
-	db 7 ;
-	db 2
-	db 8 ;
-	db 2
-	db 9 ;
-	db 3
-	db 0 ;
-	db 3
-	db 1 ;
-	db 3
-	db 2 ;
-	db 3
-	db 3 ;
-	db 3
-	db 4 ;
-	db 3
-	db 5 ;
-	db 3
-	db 6 ;
-	db 3
-	db 7 ;
-	db 3
-	db 8 ;
-	db 3
-	db 9 ;
-	db 4
-	db 0 ;
-	db 4
-	db 1 ;
-	db 4
-	db 2 ;
-	db 4
-	db 3 ;
-	db 4
-	db 4 ;
-	db 4
-	db 5 ;
-	db 4
-	db 6 ;
-	db 4
-	db 7 ;
-	db 4
-	db 8 ;
-	db 4
-	db 9 ;
-	db 5
-	db 0 ;
-	db 5
-	db 1 ;
-	db 5
-	db 2 ;
-	db 5
-	db 3 ;
-	db 5
-	db 4 ;
-	db 5
-	db 5 ;
-	db 5
-	db 6 ;
-	db 5
-	db 7 ;
-	db 5
-	db 8 ;
-	db 5
-	db 9 ;
-	db 6
-	db 0 ;
-	db 6
-	db 1 ;
-	db 6
-	db 2 ;
-	db 6
-	db 3 ;
-	db 6
-	db 4 ;
-	db 6
-	db 5 ;
-	db 6
-	db 6 ;
-	db 6
-	db 7 ;
-	db 6
-	db 8 ;
-	db 6
-	db 9 ;
-	db 7
-	db 0 ;
-	db 7
-	db 1 ;
-	db 7
-	db 2 ;
-	db 7
-	db 3 ;
-	db 7
-	db 4 ;
-	db 7
-	db 5 ;
-	db 7
-	db 6 ;
-	db 7
-	db 7 ;
-	db 7
-	db 8 ;
-	db 7
-	db 9 ;
-	db 8
-	db 0 ;
-	db 8
-	db 1 ;
-	db 8
-	db 2 ;
-	db 8
-	db 3 ;
-	db 8
-	db 4 ;
-	db 8
-	db 5 ;
-	db 8
-	db 6 ;
-	db 8
-	db 7 ;
-	db 8
-	db 8 ;
-	db 8
-	db 9 ;
-	db 9
-	db 0 ;
-	db 9
-	db 1 ;
-	db 9
-	db 2 ;
-	db 9
-	db 3 ;
-	db 9
-	db 4 ;
-	db 9
-	db 5 ;
-	db 9
-	db 6 ;
-	db 9
-	db 7 ;
-	db 9
-	db 8 ;
-	db 9
-	db 9 ;
 	
 BTN_TABLE:
 	db 100
